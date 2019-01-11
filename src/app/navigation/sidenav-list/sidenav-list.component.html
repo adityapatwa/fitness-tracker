@@ -15,8 +15,8 @@
     Used mat-list-item element to align the logout button with other list items
     instead of using the mat-list-item attribute on the button element.
   -->
-  <mat-list-item *ngIf="isAuth">
-    <button mat-icon-button (click)="onClose()">
+  <mat-list-item>
+    <button mat-icon-button (click)="onLogout()" *ngIf="isAuth">
       <mat-icon>eject</mat-icon>
       <span class="nav-caption">Logout</span>
     </button>
