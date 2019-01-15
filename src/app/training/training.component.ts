@@ -9,7 +9,7 @@ import { TrainingService } from './training.service';
 })
 export class TrainingComponent implements OnInit {
   onGoingTraining = false;
-  exerciseSubscription = Subscription;
+  exerciseSubscription: Subscription;
 
   constructor(private trainingService: TrainingService) { }
 
