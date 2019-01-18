@@ -14,7 +14,9 @@ import { take } from 'rxjs/operators';
 export class CurrentTrainingComponent implements OnInit {
   progress = 0;
   timer: number;
-  constructor(private dialog: MatDialog, private trainingService: TrainingService, private store: Store<fromTraining.State>) { }
+
+  constructor(private dialog: MatDialog, private trainingService: TrainingService, private store: Store<fromTraining.State>) {
+  }
 
   ngOnInit() {
     this.startOrResumeTimer();
@@ -32,6 +34,7 @@ export class CurrentTrainingComponent implements OnInit {
       }, step);
     });
   }
+
   onStop() {
     clearInterval(this.timer);
     const dialogRef = this.dialog.open(StopTrainingComponent, {

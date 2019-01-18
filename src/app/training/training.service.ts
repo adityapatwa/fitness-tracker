@@ -15,12 +15,13 @@ export class TrainingService {
   pastExercisesChanged = new Subject<Exercise[]>();
   private fbSubs: Subscription[] = [];
 
-  constructor(private db: AngularFirestore, private uiService: UIService, private store: Store<{ui: fromTraining.State}>) {}
+  constructor(private db: AngularFirestore, private uiService: UIService, private store: Store<{ui: fromTraining.State}>) {
+  }
 
   fetchAvailableExercises() {
     this.store.dispatch(new UI.StartLoading());
     this.fbSubs.push(
-      this.db.collection('availableExercises').snapshotChanges().pipe(map (docArray => {
+      this.db.collection('availableExercises').snapshotChanges().pipe(map(docArray => {
         return docArray.map(doc => {
           return {
             id: doc.payload.doc.id,
@@ -28,17 +29,17 @@ export class TrainingService {
           } as Exercise;
         });
       }))
-      .subscribe((exercises: Exercise[]) => {
-        this.store.dispatch(new UI.StopLoading());
-        this.store.dispatch(new Training.SetAvailableTrainings(exercises));
-      }, error => {
-        this.store.dispatch(new UI.StopLoading());
-        this.uiService.showSnackBar(
-          'Could not fetch exercises. Please try again later.',
-          null,
-          3000);
-        this.exercisesChanged.next(null);
-      }));
+        .subscribe((exercises: Exercise[]) => {
+          this.store.dispatch(new UI.StopLoading());
+          this.store.dispatch(new Training.SetAvailableTrainings(exercises));
+        }, error => {
+          this.store.dispatch(new UI.StopLoading());
+          this.uiService.showSnackBar(
+            'Could not fetch exercises. Please try again later.',
+            null,
+            3000);
+          this.exercisesChanged.next(null);
+        }));
   }
 
   startExercise(selectedId: string) {
@@ -74,15 +75,15 @@ export class TrainingService {
       this.db.collection('pastExercises')
         .valueChanges()
         .subscribe((exercises: Exercise[]) => {
-        this.store.dispatch(new Training.SetPastTrainings(exercises));
-    }));
+          this.store.dispatch(new Training.SetPastTrainings(exercises));
+        }));
   }
 
   cancelSubscriptions() {
     this.fbSubs.forEach(sub => sub.unsubscribe());
   }
 
-  private storeExercise (exercise: Exercise) {
+  private storeExercise(exercise: Exercise) {
     this.db.collection('pastExercises').add(exercise);
   }
 }

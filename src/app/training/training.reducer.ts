@@ -12,18 +12,19 @@ export interface TrainingState {
 export interface State extends fromRoot.State {
   training: TrainingState;
 }
+
 const initialState: TrainingState = {
   availableExercises: [],
   pastExercises: [],
   activeTraining: null
 };
 
-export function trainingReducer( state = initialState, action: TrainingActions) {
+export function trainingReducer(state = initialState, action: TrainingActions) {
   switch (action.type) {
     case START_TRAINING:
       return {
         ...state,
-        activeTraining: {...state.availableExercises.find(ex => ex.id === action.payload)}
+        activeTraining: { ...state.availableExercises.find(ex => ex.id === action.payload) }
       };
     case STOP_TRAINING:
       return {

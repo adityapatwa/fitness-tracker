@@ -39,4 +39,5 @@ import { reducers } from './app.reducer';
   providers: [AuthService, TrainingService, UIService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

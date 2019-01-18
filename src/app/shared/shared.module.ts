@@ -18,4 +18,5 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FlexLayoutModule
   ]
 })
-export class SharedModule {}
+export class SharedModule {
+}

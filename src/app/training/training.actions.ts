@@ -9,18 +9,22 @@ export const STOP_TRAINING = '[Auth] Stop Training';
 export class SetAvailableTrainings implements Action {
   readonly type = SET_AVAILABLE_TRAININGS;
 
-  constructor (public payload: Exercise[]) {}
+  constructor(public payload: Exercise[]) {
+  }
 }
 
 export class SetPastTrainings implements Action {
   readonly type = SET_PAST_TRAININGS;
 
-  constructor (public payload: Exercise[]) {}
+  constructor(public payload: Exercise[]) {
+  }
 }
 
 export class StartTraining implements Action {
   readonly type = START_TRAINING;
-  constructor (public payload: string) {}
+
+  constructor(public payload: string) {
+  }
 }
 
 export class StopTraining implements Action {

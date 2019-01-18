@@ -20,7 +20,8 @@ export class AuthService {
     private snackBar: MatSnackBar,
     private uiService: UIService,
     private store: Store<{ui: fromRoot.State}>
-  ) {}
+  ) {
+  }
 
   initAuthListener() {
     this.afAuth.authState.subscribe(user => {

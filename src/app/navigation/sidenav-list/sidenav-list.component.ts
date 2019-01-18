@@ -13,7 +13,8 @@ export class SidenavListComponent implements OnInit {
   @Output() closeSidenav = new EventEmitter<void>();
   isAuth$: Observable<boolean>;
 
-  constructor(private authService: AuthService, private store: Store<{auth: fromRoot.State}>) { }
+  constructor(private authService: AuthService, private store: Store<{auth: fromRoot.State}>) {
+  }
 
   ngOnInit() {
     this.isAuth$ = this.store.select(fromRoot.getIsAuthenticated);
@@ -24,7 +25,7 @@ export class SidenavListComponent implements OnInit {
     this.onClose();
   }
 
-  onClose () {
+  onClose() {
     this.closeSidenav.emit();
   }
 }

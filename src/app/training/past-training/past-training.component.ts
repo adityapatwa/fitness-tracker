@@ -17,7 +17,8 @@ export class PastTrainingComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private trainingService: TrainingService, private store: Store<fromTraining.State>) { }
+  constructor(private trainingService: TrainingService, private store: Store<fromTraining.State>) {
+  }
 
   ngOnInit() {
     this.store.select(fromTraining.getPastExercises).subscribe((exercises: Exercise[]) => {

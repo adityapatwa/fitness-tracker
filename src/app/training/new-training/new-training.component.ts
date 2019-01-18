@@ -17,7 +17,8 @@ export class NewTrainingComponent implements OnInit {
   exercises$: Observable<Exercise[]>;
   isLoading$: Observable<boolean>;
 
-  constructor(private trainingService: TrainingService,  private store: Store<fromTraining.State>) { }
+  constructor(private trainingService: TrainingService, private store: Store<fromTraining.State>) {
+  }
 
   ngOnInit() {
     this.isLoading$ = this.store.select(fromRoot.getIsLoading);

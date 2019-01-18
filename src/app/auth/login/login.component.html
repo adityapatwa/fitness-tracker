@@ -1,16 +1,18 @@
 <section>
-  <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <form (ngSubmit) = "onSubmit()" [formGroup] = "loginForm" fxLayout = "column" fxLayoutAlign = "center center"
+        fxLayoutGap = "10px">
     <mat-form-field>
-      <input type = "email" matInput placeholder="Your Email" formControlName="email" autocomplete="off">
+      <input autocomplete = "off" formControlName = "email" matInput placeholder = "Your Email" type = "email">
       <mat-hint>Please enter your email.</mat-hint>
-      <mat-error *ngIf="loginForm.get('email').hasError('required')">Email is required.</mat-error>
-      <mat-error *ngIf="!loginForm.get('email').hasError('required')">Email is invalid.</mat-error>
+      <mat-error *ngIf = "loginForm.get('email').hasError('required')">Email is required.</mat-error>
+      <mat-error *ngIf = "!loginForm.get('email').hasError('required')">Email is invalid.</mat-error>
     </mat-form-field>
-    <mat-form-field hintLabel="Please enter your password.">
-      <input type = "password" matInput placeholder="Password" formControlName="password">
-      <mat-error *ngIf="loginForm.get('password').hasError('required')">Password is required.</mat-error>
+    <mat-form-field hintLabel = "Please enter your password.">
+      <input formControlName = "password" matInput placeholder = "Password" type = "password">
+      <mat-error *ngIf = "loginForm.get('password').hasError('required')">Password is required.</mat-error>
     </mat-form-field>
-    <button *ngIf="!(isLoading$ | async)" type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid">Login</button>
-    <mat-spinner *ngIf="isLoading$ | async"></mat-spinner>
+    <button *ngIf = "!(isLoading$ | async)" [disabled] = "loginForm.invalid" color = "primary" mat-raised-button
+            type = "submit">Login</button>
+    <mat-spinner *ngIf = "isLoading$ | async"></mat-spinner>
   </form>
 </section>

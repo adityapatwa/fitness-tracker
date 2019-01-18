@@ -25,4 +25,5 @@ import { trainingReducer } from './training.reducer';
   exports: [],
   entryComponents: [StopTrainingComponent]
 })
-export class TrainingModule {}
+export class TrainingModule {
+}
